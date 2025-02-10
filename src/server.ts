@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import multer from 'multer';
 import pdfParse from 'pdf-parse';
 import fs from 'fs/promises';
@@ -16,9 +16,10 @@ app.get('/', (req, res) => {
   res.send("OLÁAA");
 });
 
-app.post('/upload', upload.single('file'), async (req, res) => {
+app.post('/upload', upload.single('file'), async (req: Request, res: Response): Promise<void> => {
   if (!req.file) {
-    return res.status(400).send('Nenhum arquivo enviado');
+    res.status(400).send('Nenhum arquivo enviado');
+    return;
   }
 
   try {
@@ -31,7 +32,7 @@ app.post('/upload', upload.single('file'), async (req, res) => {
     res.json({ text: pdfData.text });
   } catch (error) {
     console.error('Erro ao processar o arquivo:', error);
-    return res.status(500).send('Erro ao processar o arquivo');
+    res.status(500).send('Erro ao processar o arquivo');
   }
 });
 
