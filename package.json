@@ -1,0 +1,23 @@
+{
+  "name": "bot-academico",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec tsx src/server.ts",
+    "start": "tsx src/server.ts",
+    "build": "tsc"
+  },
+  "author": "Herick2D, @Fausto18",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.1",
+    "nodemon": "^3.1.9",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
